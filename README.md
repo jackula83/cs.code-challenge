@@ -3,7 +3,7 @@
 ## Description
 An application that assigns sales people to customers, based on spoken language and the specialty area.
 
-## Problems
+## Challenges
 - Provided data `salesperson.json` collates language and specialty information together.
 - Rule-set [here](https://github.com/farajfarook/code-challenge) is inconsistent, particularly the `Tradie Vehicle` specialty.
 - Requirement for `No-storing data` puts emphasis of data modelling and management in the application layer.
@@ -36,4 +36,5 @@ This section tracks the scope and progress made to the code challenge.
   - [ ] Bonus: CNAME redirect from my website
   - [ ] Bonus: Add technical documentation
   - [ ] Bonus: Unit tests for frontend
+  - [ ] Bonus: Additional code refactoring
 
