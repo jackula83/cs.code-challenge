@@ -30,8 +30,9 @@ This section tracks the scope and progress made to the code challenge.
   - [ ] Dockerfiles (production)
   - [ ] Travis integration
   
-### Spare time
+### Spare time (or post delivery)
   - [ ] Bonus: AWS Task Definition
   - [ ] Bonus: AWS Deployment
   - [ ] Bonus: CNAME redirect from my website
+  - [ ] Bonus: Add technical documentation
 
