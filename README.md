@@ -35,4 +35,5 @@ This section tracks the scope and progress made to the code challenge.
   - [ ] Bonus: AWS Deployment
   - [ ] Bonus: CNAME redirect from my website
   - [ ] Bonus: Add technical documentation
+  - [ ] Bonus: Test Harness for frontend
 
