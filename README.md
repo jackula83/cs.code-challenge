@@ -1,1 +1,37 @@
 # cs.code-challenge
+
+## Description
+An application that assigns sales people to customers, based on spoken language and the specialty area.
+
+## Problems
+Provided data `salesperson.json` collates language and specialty information together.
+Rule-set [here](https://github.com/farajfarook/code-challenge) is inconsistent, particularly the `Tradie Vehicle` specialty.
+Requirement for `No-storing data` puts emphasis of data modelling and management in the application layer.
+Allowed time for coding is 2 days at best in between work, parenting and chores. However can still rough out the design in my head at other times.
+Preference for AngularJS for the frontend, instead I will be using React. I can learn Angular but I can't do it within 2 days **and** finish the code.
+
+## Scope & Progress:
+This section tracks the scope and progress made to the code challenge.
+
+### Pre-coding
+- [x] Concept & Design: Design the **optimal** solution given the time limit, not the **perfect** solution.
+
+### Day 1 coding
+- [ ] Develop Backend + Unit Tests
+
+### Day 2 coding
+- [ ] Develop Frontend
+- [ ] Build development pipeline
+  - [ ] Nginx server (frontend)
+  - [ ] Nginx server (main)
+  - [ ] Dockerfiles (development)
+  - [ ] Docker-Compose
+- [ ] Build production pipeline
+  - [ ] Dockerfiles (production)
+  - [ ] Travis integration
+  
+### Spare time
+  - [ ] Bonus: AWS Task Definition
+  - [ ] Bonus: AWS Deployment
+  - [ ] Bonus: CNAME redirect from my website
+
