@@ -17,7 +17,7 @@ This section tracks the scope and progress made to the code challenge.
 - [x] Concept & Design: Design the **optimal** solution given the time limit, not the **perfect** solution.
 
 ### Day 1 coding
-- [ ] Develop Backend + Unit Tests
+- [x] Develop Backend + Unit Tests (31-Oct-20)
 
 ### Day 2 coding
 - [ ] Develop Frontend
