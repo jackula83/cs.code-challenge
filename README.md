@@ -20,7 +20,7 @@ This section tracks the scope and progress made to the code challenge.
 - [x] Develop Backend + Unit Tests (31-Oct-20)
 
 ### Day 2 coding
-- [ ] Develop Frontend
+- [x] Develop Frontend (01-Nov-20)
 - [ ] Build development pipeline
   - [ ] Nginx server (frontend)
   - [ ] Nginx server (main)
