@@ -1,0 +1,9 @@
+{
+  "apiEndpoints": {
+    "url": "http://localhost:5005",
+    "language": "language",
+    "resource": "resource",
+    "specialty": "specialty",
+    "roster": "roster"
+  }
+}
