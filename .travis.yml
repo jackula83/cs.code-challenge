@@ -5,8 +5,8 @@ services:
 
 # build tests
 before_install:
-  - docker build -t jackula83/allocate-test-dev -f ./resourceweb/Dockerfile.dev ./resourceweb
-  - docker build -t jackula83/allocate-test-prod -f ./resourceweb/Dockerfile ./resourceweb
+  - docker build -t jackula83/allocate-test-dev -f ./ResourceFinder.Tests/Dockerfile.dev ./ResourceFinder.Tests
+  - docker build -t jackula83/allocate-test-prod -f ./ResourceFinder.Tests/Dockerfile ./ResourceFinder.Tests
 # run tests
 script:
   - docker run -e CI=true jackula83/allocate-test-dev npm test
