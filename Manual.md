@@ -18,10 +18,13 @@ This layout works in both desktop and mobile modes, and has a Navigation Bar on 
 
 1. To start, click on a language option to select it and move onto the next page. Here _English_ is the _Doesn't Speak Greek_ option.
    ![language selection](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/intro-english.png?raw=true)
+   <br />
 2. Likewise, on the next page, click on a specialty option to select it and move onto the next page. Here _Other_ is the _Not looking for anything specific_ option.
    ![specialty selection](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/specialty.png?raw=true)
+   <br />
 3. Finally, a sales person shall be allocated.
    ![sales specialist allocation](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/final.png?raw=true)
+   <br />
 
 ## Development Pipeline
 
