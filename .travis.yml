@@ -16,7 +16,7 @@ script:
 after_success:
   - docker build -t jackula83/allocate-client ./resourceweb
   - docker build -t jackula83/allocate-nginx ./Nginx
-  - docker build -t jackula83/allocate-server ./ResourceFinder
+  - docker build -t jackula83/allocate-server -f ./ResourceFinder/Dockerfile .
   # login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
   # put built images to docker hub
