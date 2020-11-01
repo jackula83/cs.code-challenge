@@ -38,9 +38,9 @@ This section tracks the scope and progress made to the code challenge.
 
 ### Spare time (or post delivery)
 
-- [ ] Bonus: AWS Task Definition
-- [ ] Bonus: AWS Deployment
-- [ ] Bonus: CNAME redirect from my website
+- [x] Bonus: AWS Task Definition (01-Nov-20)
+- [x] Bonus: AWS Deployment (01-Nov-20)
+- [x] Bonus: CNAME redirect from my website (01-Nov-20)
 - [ ] Bonus: Add technical documentation
 - [ ] Bonus: Unit tests for frontend
 - [ ] Bonus: Additional code refactoring
