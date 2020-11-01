@@ -98,7 +98,7 @@ namespace ResourceFinder.Tests
          Assert.Equal("Cierra Vega", response.Name);
       }
 
-      /// first person that not necessarily speak greek is always Cierra Vega
+      /// first person that not necessarily speak greek is always random
       [Fact]
       public async Task TestGet_LanguageOnlyEnglish()
       {
@@ -113,7 +113,6 @@ namespace ResourceFinder.Tests
 
          Assert.NotNull(response);
          Assert.NotNull(response.Name);
-         Assert.Equal("Cierra Vega", response.Name);
       }
 
       /// tests tradie special rule

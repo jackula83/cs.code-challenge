@@ -13,7 +13,7 @@ namespace AllocationStrategy.Rules
       public override ISalesPerson ApplyRule(List<ISalesPerson> a_personList)
       {
          // only apply if default language and choose someone regardless of language
-         if (m_language == default || string.Compare(m_language, Rule.DefaultLanguage, true) == 0)
+         if (m_specialty != default && (m_language == default || string.Compare(m_language, Rule.DefaultLanguage, true) == 0))
             return this.ChooseFirst(a_personList, default, m_specialty);
 
          return default;
