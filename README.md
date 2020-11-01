@@ -32,7 +32,7 @@ This section tracks the scope and progress made to the code challenge.
   - [x] Nginx server (main)
   - [x] Dockerfiles (development)
   - [x] Docker-Compose
-- [x] Build production pipeline
+- [x] Build production pipeline (01-Nov-20)
   - [x] Dockerfiles (production)
   - [x] Travis integration
 
