@@ -1,6 +1,6 @@
 {
   "apiEndpoints": {
-    "url": "http://localhost:5005",
+    "url": "/allocate",
     "language": "language",
     "resource": "resource",
     "specialty": "specialty",
