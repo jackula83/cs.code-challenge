@@ -1,0 +1,25 @@
+language: generic
+sudo: required
+services:
+  - Docker
+
+# build tests
+before_install:
+  - docker build -t jackula83/allocate-test-dev -f ./resourceweb/Dockerfile.dev ./resourceweb
+  - docker build -t jackula83/allocate-test-prod -f ./resourceweb/Dockerfile ./resourceweb
+# run tests
+script:
+  - docker run -e CI=true jackula83/allocate-test-dev npm test
+  - docker run -e CI=true jackula83/allocate-test-prod npm test
+
+# build prod
+after_success:
+  - docker build -t jackula83/allocate-client ./resourceweb
+  - docker build -t jackula83/allocate-nginx ./Nginx
+  - docker build -t jackula83/allocate-server ./ResourceFinder
+  # login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
+  # put built images to docker hub
+  - docker push jackula83/allocate-client
+  - docker push jackula83/allocate-nginx
+  - docker push jackula83/allocate-server
