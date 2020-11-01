@@ -23,9 +23,8 @@ namespace AllocationStrategy.RuleSets
             // match against specialty only
             new DefaultLanguageRule(default, a_specialty),
 
-            // match against language only
+            // match against non-default language only
             new NonDefaultLanguageRule(a_language, default),
-            new DefaultLanguageRule(a_language, default),
 
             // if nothing matches, just pick a random one
             new RandomRule(default, default)
