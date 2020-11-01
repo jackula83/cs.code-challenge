@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Form from './common/form';
 import http from '../services/httpService';
 import config from '../config.json';
@@ -14,7 +14,7 @@ class RosterForm extends Form {
   }
 
   render() {
-    return <h3 className="display-4">Resetting Roster...</h3>;
+    return <React.Fragment />;
   }
 }
 
