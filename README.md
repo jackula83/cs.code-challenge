@@ -44,3 +44,31 @@ This section tracks the scope and progress made to the code challenge.
 - [ ] Bonus: Add technical documentation
 - [ ] Bonus: Unit tests for frontend
 - [ ] Bonus: Additional code refactoring
+
+## Manual
+
+Quick start guide for the application.
+
+### Development Pipeline
+
+This section demonstrates how to run the app in development mode.
+
+#### Starting up
+
+Run:
+
+```
+docker-compose up --build
+```
+
+_(Remove `--build` on subsequent runs)_
+
+Then open a web browser and go to:
+
+```
+http://localhost:4005/
+```
+
+_(You can change the port number from [docker-compose.yml](https://github.com/jackula83/cs.code-challenge/blob/main/docker-compose.yml))_
+
+The development pipeline will run tests and start the `DEBUG` build of the application.
