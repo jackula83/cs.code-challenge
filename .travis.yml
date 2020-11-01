@@ -23,3 +23,15 @@ after_success:
   - docker push jackula83/allocate-client
   - docker push jackula83/allocate-nginx
   - docker push jackula83/allocate-server
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: CarSalesAllocate
+  env: CarSales-env
+  bucket_name: elasticbeanstalk-us-east-2-149033151268
+  bucket_path: CarSalesAllocate
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
