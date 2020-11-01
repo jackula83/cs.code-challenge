@@ -3,6 +3,7 @@ import Form from '../common/form';
 import http from '../../services/httpService';
 import { Container } from 'reactstrap';
 import config from '../../config.json';
+import SpecialtySection from './specialtySection';
 
 class ResourceSection extends Form {
   state = {
@@ -22,8 +23,14 @@ class ResourceSection extends Form {
     this.setState({ language, specialty });
 
     const { url, resource: path } = config.apiEndpoints;
+
+    const action =
+      specialty === SpecialtySection.otherOption
+        ? `${language}`
+        : `${language}/${specialty}`;
+
     const { data: resourceResponse } = await http.get(
-      `${url}/${path}/${language}/${specialty}`
+      `${url}/${path}/${action}`
     );
     const { Name: name } = resourceResponse;
 

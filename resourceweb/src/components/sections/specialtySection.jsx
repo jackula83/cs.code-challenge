@@ -5,6 +5,8 @@ import { Container } from 'reactstrap';
 import config from '../../config.json';
 
 class SpecialtySection extends Form {
+  static otherOption = 'Other';
+
   async componentDidMount() {
     const { onSelected } = this.props;
     const { url, specialty: path } = config.apiEndpoints;
@@ -21,6 +23,14 @@ class SpecialtySection extends Form {
         handleOptionSelected: onSelected,
       };
     }
+
+    // add the none option
+    items[items.length] = {
+      id: SpecialtySection.otherOption,
+      filename: 'nonevehicle.png',
+      label: SpecialtySection.otherOption,
+      handleOptionSelected: onSelected,
+    };
 
     const data = { ...this.state.data };
     data[SpecialtySection.name] = items;
