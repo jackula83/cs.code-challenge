@@ -1,6 +1,6 @@
 # Manual
 
-Quick start manual for the application.
+This is the quick start manual for the CarSales Resource Finder.
 
 ## Main Features
 
@@ -12,7 +12,7 @@ This layout works in both desktop and mobile modes, and has a Navigation Bar on 
 | Feature                                                                                                               | Description                                                                               |
 | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![new customer](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/intro-newcustomer.png?raw=true) | Simulates a new customer arrival, allowing a new sales specialist to be _assigned_.       |
-| ![reset state](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/intro-newcustomer.png?raw=true)  | Resets the application state, restoring the original 8 sales specialists as _unassigned_. |
+| ![reset state](https://github.com/jackula83/cs.code-challenge/blob/main/ManualAssets/intro-resetstate.png?raw=true)   | Resets the application state, restoring the original 8 sales specialists as _unassigned_. |
 
 ### Workflow
 
