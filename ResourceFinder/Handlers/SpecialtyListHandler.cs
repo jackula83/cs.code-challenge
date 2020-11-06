@@ -1,12 +1,12 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Models.Specialty;
-using ResourceEntities.Requests;
-using ResourceEntities.Responses;
+﻿using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
 using ResourceFinder.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ResourceFinder.Handlers
@@ -22,7 +22,7 @@ namespace ResourceFinder.Handlers
          => m_specialtyFactory = a_specialtyFactory;
       #endregion // Construction
 
-      public async Task<SpecialtyListResponse> Handle(SpecialtyListRequest a_request)
+      public async Task<SpecialtyListResponse> Handle(SpecialtyListRequest request, CancellationToken cancellationToken)
       {
          List<ISpecialtyModel> specialtyList = await Task.Run(() => m_specialtyFactory.Enumerate());
          return new SpecialtyListResponse { Result = specialtyList };

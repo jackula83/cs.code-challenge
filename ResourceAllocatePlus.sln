@@ -11,14 +11,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllocationStrategy", "Alloc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceFinder.Tests", "ResourceFinder.Tests\ResourceFinder.Tests.csproj", "{6BE8B7F2-724A-4031-87EE-D731227DAF47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceEntities", "ResourceEntities\ResourceEntities.csproj", "{AD0A1CC7-79BF-4A5B-879C-3B79485A62D1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD1A0FDA-6946-416E-B585-16857D44994E}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceWriter", "ResourceWriter\ResourceWriter.csproj", "{486591F4-1BC5-4BA8-9596-5B3CF2B01175}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceCommonEntities", "ResourceCommonEntities\ResourceCommonEntities.csproj", "{F4033EE0-06E6-435F-8D1F-73609FDD824A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceApplicationEntities", "ResourceApplicationEntities\ResourceApplicationEntities.csproj", "{EFE5B646-0CA1-49ED-8036-853886BCCEC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceBusinessEntities", "ResourceBusinessEntities\ResourceBusinessEntities.csproj", "{BB1FB328-208F-40BE-BF7B-FF92E4A9C50E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,10 +48,22 @@ Global
 		{6BE8B7F2-724A-4031-87EE-D731227DAF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE8B7F2-724A-4031-87EE-D731227DAF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE8B7F2-724A-4031-87EE-D731227DAF47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD0A1CC7-79BF-4A5B-879C-3B79485A62D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0A1CC7-79BF-4A5B-879C-3B79485A62D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0A1CC7-79BF-4A5B-879C-3B79485A62D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0A1CC7-79BF-4A5B-879C-3B79485A62D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{486591F4-1BC5-4BA8-9596-5B3CF2B01175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{486591F4-1BC5-4BA8-9596-5B3CF2B01175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{486591F4-1BC5-4BA8-9596-5B3CF2B01175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{486591F4-1BC5-4BA8-9596-5B3CF2B01175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4033EE0-06E6-435F-8D1F-73609FDD824A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4033EE0-06E6-435F-8D1F-73609FDD824A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4033EE0-06E6-435F-8D1F-73609FDD824A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4033EE0-06E6-435F-8D1F-73609FDD824A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE5B646-0CA1-49ED-8036-853886BCCEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE5B646-0CA1-49ED-8036-853886BCCEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE5B646-0CA1-49ED-8036-853886BCCEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE5B646-0CA1-49ED-8036-853886BCCEC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1FB328-208F-40BE-BF7B-FF92E4A9C50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1FB328-208F-40BE-BF7B-FF92E4A9C50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1FB328-208F-40BE-BF7B-FF92E4A9C50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1FB328-208F-40BE-BF7B-FF92E4A9C50E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

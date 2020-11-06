@@ -1,4 +1,5 @@
-﻿using ResourceEntities.Interfaces.Application;
+﻿using ResourceBusinessEntities.Interfaces.Application;
+using ResourceCommonEntities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

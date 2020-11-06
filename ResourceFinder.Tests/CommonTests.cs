@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Models.Language;
-using ResourceEntities.Models.Specialty;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
+using ResourceBusinessEntities.Models.Language;
+using ResourceBusinessEntities.Models.Specialty;
 using ResourceFinder.Tests.Mocks;
 using ResourceServices;
 using System;
@@ -11,6 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ResourceFinder.Tests
 {
@@ -43,7 +46,7 @@ namespace ResourceFinder.Tests
          m_sportsSpecialty = new SportsCarSpecialtyModel();
       }
 
-      protected TResultType GetObject<TResultType>(ActionResult a_result)
+      protected TResultType GetObject<TResultType>(IActionResult a_result)
          where TResultType : class
       {
          try
@@ -59,5 +62,8 @@ namespace ResourceFinder.Tests
 
          return default;
       }
+
+      protected ContentResult JsonContent(object a_content)
+         => new ContentResult { Content = JsonConvert.SerializeObject(a_content), ContentType = Application.Json, StatusCode = StatusCodes.Status200OK };
    }
 }

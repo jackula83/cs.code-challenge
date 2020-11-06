@@ -1,10 +1,12 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Requests;
-using ResourceEntities.Responses;
+﻿
+using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
+using ResourceBusinessEntities.Interfaces.Features;
 using ResourceFinder.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ResourceFinder.Handlers
@@ -20,7 +22,7 @@ namespace ResourceFinder.Handlers
          => m_rosterManager = a_rosterManager;
       #endregion // Construction
 
-      public async Task<RosterResetResponse> Handle(RosterResetRequest a_request)
+      public async Task<RosterResetResponse> Handle(RosterResetRequest request, CancellationToken cancellationToken)
       {
          await Task.Run(() => m_rosterManager.Reset());
          return new RosterResetResponse();

@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Responses;
+using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
 using ResourceFinder.Controllers;
 using ResourceFinder.Handlers;
+using ResourceFinder.Interfaces;
 using ResourceServices;
 using System;
 using System.Collections.Generic;
@@ -27,19 +30,17 @@ namespace ResourceFinder.Tests
          ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
 
          var consumerHandler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var consumerController = new ResourceController(consumerHandler);
 
          // set up roster handler
          var rosterHandler = new RosterResetHandler(m_rosterManager);
-         var rosterController = new RosterController(rosterHandler);
 
          // consume until there are no sales persons left
-         ActionResult consumerResult = default;
+         IActionResult consumerResult = default;
          AllocateResourceResponse consumerResponse = default;
 
          do
          {
-            consumerResult = await consumerController.Get(default);
+            consumerResult = this.JsonContent(await consumerHandler.Handle(new AllocateResourceRequest(), default));
             consumerResponse = this.GetObject<AllocateResourceResponse>(consumerResult);
 
             Assert.NotNull(consumerResponse);
@@ -47,13 +48,13 @@ namespace ResourceFinder.Tests
          } while (!string.IsNullOrEmpty(consumerResponse.Name));
 
          // reset the roster
-         ActionResult rosterResult = await rosterController.Post();
+         IActionResult rosterResult = this.JsonContent(await rosterHandler.Handle(new RosterResetRequest(), default));
          RosterResetResponse rosterResponse = this.GetObject<RosterResetResponse>(rosterResult);
 
          Assert.NotNull(rosterResponse);
 
          // check that we can get another person from the consumer
-         consumerResult = await consumerController.Get(default);
+         consumerResult = this.JsonContent(await consumerHandler.Handle(new AllocateResourceRequest(), default));
          consumerResponse = this.GetObject<AllocateResourceResponse>(consumerResult);
 
          Assert.NotNull(consumerResponse);

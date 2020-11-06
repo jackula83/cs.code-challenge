@@ -1,13 +1,13 @@
-﻿using ResourceEntities.Interfaces.Fx;
-using ResourceEntities.Requests;
-using ResourceEntities.Responses;
+﻿using MediatR;
+using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ResourceFinder.Interfaces
 {
-   public interface IAllocateResourceHandler : IRequestResponseHandler<AllocateResourceRequest, AllocateResourceResponse>
+   public interface IAllocateResourceHandler : IRequestHandler<AllocateResourceRequest, AllocateResourceResponse>
    {
    }
 }

@@ -5,7 +5,8 @@
    </PropertyGroup>
 
    <ItemGroup>
-      <ProjectReference Include="..\ResourceEntities\ResourceEntities.csproj" />
+     <ProjectReference Include="..\ResourceBusinessEntities\ResourceBusinessEntities.csproj" />
+     <ProjectReference Include="..\ResourceCommonEntities\ResourceCommonEntities.csproj" />
    </ItemGroup>
 
 </Project>

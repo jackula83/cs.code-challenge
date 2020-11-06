@@ -1,6 +1,4 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using System;
+﻿using ResourceCommonEntities.Interfaces;
 using System.IO;
 using System.Threading.Tasks;
 

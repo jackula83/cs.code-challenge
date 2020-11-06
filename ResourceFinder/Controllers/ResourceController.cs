@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ResourceEntities.BaseClasses;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Requests;
-using ResourceEntities.Responses;
+using ResourceApplicationEntities.Controllers;
+using ResourceApplicationEntities.Requests;
+using ResourceBusinessEntities.BaseClasses;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Models;
 using ResourceFinder.Interfaces;
 
 namespace ResourceFinder.Controllers
 {
    [Route("[controller]")]
    [ApiController]
-   public class ResourceController : CommonController<IAllocateResourceHandler>
+   public class ResourceController : CommonController
    {
-      public ResourceController(IAllocateResourceHandler a_handler) : base(a_handler) { }
+      public ResourceController(IMediator a_mediator) : base(a_mediator) { }
 
       [HttpGet("{language}")]
-      public async Task<ActionResult> Get(string language)
+      public async Task<IActionResult> Get(string language)
          => await this.Get(language, default);
 
       [HttpGet("{language}/{specialty}")]
-      public async Task<ActionResult> Get(string language, string specialty)
+      public async Task<IActionResult> Get(string language, string specialty)
       {
          AllocateResourceRequest sr = new AllocateResourceRequest
          {
@@ -31,7 +32,7 @@ namespace ResourceFinder.Controllers
             Specialty = specialty
          };
 
-         return await this.RunAsync(() => m_handler.Handle(sr));
+         return await this.RunAsync(() => m_mediator.Send(sr));
       }
    }
 }

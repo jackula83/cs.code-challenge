@@ -1,21 +1,20 @@
 ﻿using Newtonsoft.Json;
-using ResourceEntities.Interfaces.Fx;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Requests;
-using ResourceEntities.Responses;
+using ResourceBusinessEntities.Interfaces.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ResourceEntities.Models.Database;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Utilities;
-using ResourceEntities.Models.Specialty;
-using System.Security.Cryptography.X509Certificates;
+using ResourceBusinessEntities.Models.Database;
 using AllocationStrategy.Interfaces;
 using AllocationStrategy.RuleSets;
 using ResourceFinder.Interfaces;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceCommonEntities.Interfaces;
+using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
+using MediatR;
+using System.Threading;
 
 namespace ResourceFinder.Handlers
 {
@@ -38,7 +37,7 @@ namespace ResourceFinder.Handlers
       }
       #endregion // Construction
 
-      public async Task<AllocateResourceResponse> Handle(AllocateResourceRequest a_request)
+      public async Task<AllocateResourceResponse> Handle(AllocateResourceRequest a_request, CancellationToken a_cancellationToken)
       {
          // get all sales persons from the "database"
          List<ISalesPerson> personList = await this.SelectModelsFromDatabase();

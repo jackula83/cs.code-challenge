@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using ResourceApplicationEntities.Controllers;
+using ResourceApplicationEntities.Requests;
 using ResourceFinder.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,12 +15,12 @@ namespace ResourceFinder.Controllers
    /// </summary>
    [Route("[controller]")]
    [ApiController]
-   public class RosterController : CommonController<IRosterResetHandler>
+   public class RosterController : CommonController
    {
-      public RosterController(IRosterResetHandler a_handler) : base(a_handler) { }
+      public RosterController(IMediator a_mediator) : base(a_mediator) { }
 
       [HttpPost]
-      public async Task<ActionResult> Post()
-         => await this.RunAsync(() => m_handler.Handle(null));
+      public async Task<IActionResult> Post()
+         => await this.RunAsync(() => m_mediator.Send(new RosterResetRequest()));
    }
 }

@@ -1,12 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Models.Language;
-using ResourceEntities.Responses;
-using ResourceFinder.Controllers;
+using ResourceApplicationEntities.Requests;
+using ResourceApplicationEntities.Responses;
+using ResourceBusinessEntities.Interfaces.Features;
 using ResourceFinder.Handlers;
-using ResourceFinder.Interfaces;
-using ResourceFinder.Tests.Mocks;
 using ResourceServices;
 using System;
 using System.Threading.Tasks;
@@ -19,7 +15,6 @@ namespace ResourceFinder.Tests
    {
       public ResourceControllerTests(ITestOutputHelper a_testOutputHelper) : base(a_testOutputHelper)
       {
-         // TODO refactor this better if time allows
       }
 
       /// tests the default code-challenge test example
@@ -29,34 +24,9 @@ namespace ResourceFinder.Tests
          ISpecialtyFactory specialtyFactory = new SpecialtyFactoryService();
          ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
 
-         var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var controller = new ResourceController(handler);
-
-         // per example test case
-
-         // First Customer speaks Greek and is looking for a Family car – Assigned to Kierra Gentry
-         var result = await controller.Get(m_greekLanguage.Name, m_familySpecialty.SpecialtyCriteria);
-         var response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Kierra Gentry", response.Name);
-
-         // Second Customer speaks Greek and is looking for a Sports car – Assigned to Thomas Crane
-         result = await controller.Get(m_greekLanguage.Name, m_sportsSpecialty.SpecialtyCriteria);
-         response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Thomas Crane", response.Name);
-
-         // Third Customer doesn't speak Greek and is looking for a Sports car – Assigned to Alden Cantrell
-         result = await controller.Get(m_englishLanguage.Name, m_sportsSpecialty.SpecialtyCriteria);
-         response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Alden Cantrell", response.Name);
+         await this.TestGet_Expected(m_greekLanguage.Name, m_familySpecialty.SpecialtyCriteria, "Kierra Gentry", specialtyFactory, personFactory);
+         await this.TestGet_Expected(m_greekLanguage.Name, m_sportsSpecialty.SpecialtyCriteria, "Thomas Crane", specialtyFactory, personFactory);
+         await this.TestGet_Expected(m_englishLanguage.Name, m_sportsSpecialty.SpecialtyCriteria, "Alden Cantrell", specialtyFactory, personFactory);
       }
 
       // tests expected result when there are no more remaining sales people
@@ -67,13 +37,12 @@ namespace ResourceFinder.Tests
          ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
 
          var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var controller = new ResourceController(handler);
 
          // tests that after 8 requests, we get null returned
          for (int i = 0; i < 8; ++i)
-            _ = await controller.Get(default, default);
+            _ = await handler.Handle(new AllocateResourceRequest(), default);
 
-         var result = await controller.Get(default, default);
+         var result = this.JsonContent(await handler.Handle(new AllocateResourceRequest(), default));
          var response = this.GetObject<AllocateResourceResponse>(result);
 
          Assert.NotNull(response);
@@ -84,35 +53,15 @@ namespace ResourceFinder.Tests
       [Fact]
       public async Task TestGet_LanguageOnlyGreek()
       {
-         ISpecialtyFactory specialtyFactory = new SpecialtyFactoryService();
-         ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
-
-         var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var controller = new ResourceController(handler);
-
-         var result = await controller.Get(m_greekLanguage.Name);
-         var response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Cierra Vega", response.Name);
+         await this.TestGet_Expected(m_greekLanguage.Name, default, "Cierra Vega");
       }
 
       /// first person that not necessarily speak greek is always random
       [Fact]
       public async Task TestGet_LanguageOnlyEnglish()
       {
-         ISpecialtyFactory specialtyFactory = new SpecialtyFactoryService();
-         ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
-
-         var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var controller = new ResourceController(handler);
-
-         var result = await controller.Get(m_englishLanguage.Name);
-         var response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
+         // TODO introduce IRandomGenerator for predictable random testing
+         await this.TestGet_Expected(m_englishLanguage.Name, default, default);
       }
 
       /// tests tradie special rule
@@ -122,36 +71,40 @@ namespace ResourceFinder.Tests
          ISpecialtyFactory specialtyFactory = new SpecialtyFactoryService();
          ISalesPersonFactory personFactory = new SalesPersonFactoryService(specialtyFactory);
 
-         var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
-         var controller = new ResourceController(handler);
-
-         // first person tradie regardless of language is always Alden Cantrell
-         var result = await controller.Get(m_greekLanguage.Name, m_tradieSpecialty.SpecialtyCriteria);
-         var response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Alden Cantrell", response.Name);
-
-         // the next tradie regardless of language is always Pierre Cox
-         result = await controller.Get(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria);
-         response = this.GetObject<AllocateResourceResponse>(result);
-
-         Assert.NotNull(response);
-         Assert.NotNull(response.Name);
-         Assert.Equal("Pierre Cox", response.Name);
+         await this.TestGet_Expected(m_greekLanguage.Name, m_tradieSpecialty.SpecialtyCriteria, "Alden Cantrell", specialtyFactory, personFactory);
+         await this.TestGet_Expected(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria, "Pierre Cox", specialtyFactory, personFactory);
 
          // exhaust remaining tradie specialists and ensure we can get another specialist without tradie
          // vehicle specialisation, this is to ensure it conforms to the rule: if no tradie specialists
          // available, go straight to a random specialist. There are only 4 tradie specialists in the dataset.
-         await controller.Get(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria);
-         await controller.Get(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria);
+         await this.TestGet_Expected(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria, default, specialtyFactory, personFactory);
+         await this.TestGet_Expected(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria, default, specialtyFactory, personFactory);
 
-         result = await controller.Get(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria);
-         response = this.GetObject<AllocateResourceResponse>(result);
+         // when no tradies are left, get a random tradie
+         // TODO introduce IRandomGenerator for predictable random testing
+         await this.TestGet_Expected(m_englishLanguage.Name, m_tradieSpecialty.SpecialtyCriteria, default, specialtyFactory, personFactory);
+      }
+
+      #region Helpers
+      private async Task TestGet_Expected(string a_language, string a_specialty, string a_expectedName, ISpecialtyFactory a_specialtyFactory = default, ISalesPersonFactory a_personFactory = default)
+      {
+         ISpecialtyFactory specialtyFactory = a_specialtyFactory ?? new SpecialtyFactoryService();
+         ISalesPersonFactory personFactory = a_personFactory ?? new SalesPersonFactoryService(specialtyFactory);
+
+         var handler = new AllocateResourceHandler(personFactory, specialtyFactory, m_rosterManager, m_dataAccess);
+
+         // First Customer speaks Greek and is looking for a Family car – Assigned to Kierra Gentry
+         var result = this.JsonContent(await handler.Handle(
+            new AllocateResourceRequest { Language = a_language, Specialty = a_specialty }, default));
+         var response = this.GetObject<AllocateResourceResponse>(result);
 
          Assert.NotNull(response);
          Assert.NotNull(response.Name);
+
+         if (!string.IsNullOrEmpty(a_expectedName))
+            Assert.Equal(a_expectedName, response.Name);
+
       }
+      #endregion // Helpers
    }
 }

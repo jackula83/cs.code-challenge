@@ -1,7 +1,8 @@
-﻿using ResourceEntities.BaseClasses;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Models.Language;
+﻿using ResourceBusinessEntities.BaseClasses;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
+using ResourceBusinessEntities.Models.Language;
 using System;
 using System.Collections.Generic;
 using System.Text;

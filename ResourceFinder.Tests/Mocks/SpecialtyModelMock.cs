@@ -1,5 +1,5 @@
-﻿using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Models.Specialty;
+﻿using ResourceBusinessEntities.Interfaces.Models;
+using ResourceBusinessEntities.Models.Specialty;
 using System;
 using System.Collections.Generic;
 using System.Text;
