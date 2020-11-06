@@ -43,7 +43,7 @@ This section tracks the scope and progress made to the code challenge.
 - [x] Bonus: CNAME redirect from my website (01-Nov-20)
 - [ ] Bonus: Add technical documentation
 - [ ] Bonus: Unit tests for frontend
-- [x] Bonus: Additional code refactoring (06-Nov-20: see (here)[https://github.com/jackula83/cs.code-challenge/tree/cleanupi])
+- [x] Bonus: Additional code refactoring (06-Nov-20: see [here](https://github.com/jackula83/cs.code-challenge/tree/cleanup))
 
 ### Manual
 
