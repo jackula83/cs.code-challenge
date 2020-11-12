@@ -7,7 +7,7 @@ An application that assigns sales people to customers, based on spoken language 
 ## Challenges
 
 - Provided data `salesperson.json` collates language and specialty information together.
-- Rule-set [here](https://github.com/farajfarook/code-challenge) is inconsistent, particularly the `Tradie Vehicle` specialty.
+- Rule-set [here](https://github.com/jackula83/cs.code-challenge/blob/main/Requirements.md) is inconsistent, particularly the `Tradie Vehicle` specialty.
 - Requirement for `No-storing data` puts emphasis of data modelling and management in the application layer.
 - Allowed time for coding is 2 days at best in between work, parenting and chores. However can still rough out the design in my head at other times.
 - Preference for AngularJS for the frontend, instead I will be using React. I can learn Angular but I can't do it within 2 days **and** finish the code.
@@ -43,7 +43,7 @@ This section tracks the scope and progress made to the code challenge.
 - [x] Bonus: CNAME redirect from my website (01-Nov-20)
 - [ ] Bonus: Add technical documentation
 - [ ] Bonus: Unit tests for frontend
-- [x] Bonus: Additional code refactoring (06-Nov-20: see [here](https://github.com/jackula83/cs.code-challenge/blob/main/Requirements.md))
+- [x] Bonus: Additional code refactoring (06-Nov-20)
 
 ### Manual
 
