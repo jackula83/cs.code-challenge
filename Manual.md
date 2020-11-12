@@ -1,6 +1,6 @@
 # Manual
 
-This is the quick start manual for the CarSales Resource Finder.
+This is the quick start manual for the Allocate Resource Finder.
 
 ## Main Features
 

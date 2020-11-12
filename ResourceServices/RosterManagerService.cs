@@ -1,5 +1,6 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
+﻿using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ResourceEntities.Responses;
+using ResourceApplicationEntities.Controllers;
+using ResourceApplicationEntities.Requests;
 using ResourceFinder.Interfaces;
 
 namespace ResourceFinder.Controllers
 {
    [Route("[controller]")]
    [ApiController]
-   public class LanguageController : CommonController<ILanguageListHandler>
+   public class LanguageController : CommonController
    {
-      public LanguageController(ILanguageListHandler a_handler) : base(a_handler) { }
+      public LanguageController(IMediator a_mediator) : base(a_mediator) { }
 
       [HttpGet]
-      public async Task<ActionResult> Get()
-         => await this.RunAsync(() => m_handler.Handle(null));
+      public async Task<IActionResult> Get()
+         => await this.RunAsync(() => m_mediator.Send(new LanguageListRequest()));
    }
 }

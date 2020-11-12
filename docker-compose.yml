@@ -16,11 +16,11 @@ services:
     stdin_open: true
     restart: unless-stopped
     build:
-      context: ./resourceweb
+      context: ./ResourceWeb
       dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
-      - ./resourceweb:/app
+      - ./ResourceWeb:/app
 
   nginx:
     restart: always

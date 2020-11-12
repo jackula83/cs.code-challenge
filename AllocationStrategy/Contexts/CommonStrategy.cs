@@ -1,5 +1,5 @@
 ﻿using AllocationStrategy.Rules;
-using ResourceEntities.Interfaces.Business;
+using ResourceBusinessEntities.Interfaces.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

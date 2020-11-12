@@ -1,9 +1,9 @@
 {
   "apiEndpoints": {
     "url": "/allocate",
-    "language": "language",
-    "resource": "resource",
-    "specialty": "specialty",
-    "roster": "roster"
+    "language": "Language",
+    "resource": "Resource",
+    "specialty": "Specialty",
+    "roster": "Roster"
   }
 }

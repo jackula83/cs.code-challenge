@@ -32,7 +32,7 @@ class NavMenu extends Component {
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm bg-dark navbar-dark movable">
           <Container>
-            <NavbarBrand to="/">CarSales</NavbarBrand>
+            <NavbarBrand to="/">GeekMotors</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
               // className="d-sm-inline-flex flex-sm-row-reverse"

@@ -13,7 +13,7 @@
       "image": "jackula83/allocate-server",
       "hostname": "api",
       "essential": false,
-      "memory": 256
+      "memory": 128
     },
     {
       "name": "nginx",

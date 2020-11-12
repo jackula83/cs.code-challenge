@@ -1,6 +1,5 @@
 ﻿using AllocationStrategy.Interfaces;
 using AllocationStrategy.Rules;
-using ResourceEntities.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;

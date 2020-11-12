@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,8 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
+using ResourceCommonEntities.Interfaces;
 using ResourceFinder.Handlers;
 using ResourceFinder.Interfaces;
 using ResourceServices;
@@ -32,6 +36,8 @@ namespace ResourceFinder
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
+         services.AddMediatR(Assembly.GetExecutingAssembly());
+
          services.AddControllers();
 
          services.AddSingleton<ISpecialtyFactory, SpecialtyFactoryService>();
@@ -40,12 +46,6 @@ namespace ResourceFinder
          services.AddSingleton<IRosterManager, RosterManagerService>();
 
          services.AddScoped<IDataAccess, DataAccessService>();
-
-         // register handlers
-         services.AddTransient<IAllocateResourceHandler, AllocateResourceHandler>();
-         services.AddTransient<ISpecialtyListHandler, SpecialtyListHandler>();
-         services.AddTransient<ILanguageListHandler, LanguageListHandler>();
-         services.AddTransient<IRosterResetHandler, RosterResetHandler>();
 
          services.AddCors(options =>
             options.AddPolicy(AllowCorsPolicy, builder =>

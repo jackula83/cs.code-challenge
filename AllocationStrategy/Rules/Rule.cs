@@ -1,5 +1,5 @@
-﻿using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Models.Language;
+﻿using ResourceBusinessEntities.Interfaces.Models;
+using ResourceBusinessEntities.Models.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,11 +47,8 @@ namespace AllocationStrategy.Rules
 
       protected ISalesPerson ChooseFirst(List<ISalesPerson> a_personList, string a_language = default, string a_specialty = default)
          => a_personList.FirstOrDefault(p =>
-               (a_language == default || p.LanguageList.FirstOrDefault(l => l.Name == a_language) != default)
-            && (a_specialty == default || p.SpecialtyList.FirstOrDefault(s => s.SpecialtyCriteria == a_specialty) != default));
-
-      //protected ISalesPerson ChooseTradieSpecialty(List<ISalesPerson> a_personList)
-      //   => a_personList.FirstOrDefault(p => p.SpecialtyList.FirstOrDefault(x => x is TradieVehicleSpecialtyModel) != default);
+               (a_language == default || p.LanguageList.Any(l => l.Name == a_language))
+            && (a_specialty == default || p.SpecialtyList.Any(s => s.SpecialtyCriteria == a_specialty)));
       #endregion // Helpers
    }
 }

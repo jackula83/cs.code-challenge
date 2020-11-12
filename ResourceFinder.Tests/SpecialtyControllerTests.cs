@@ -1,6 +1,7 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Responses;
+﻿using ResourceApplicationEntities.Requests;
+using ResourceBusinessEntities.Interfaces.Application;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
 using ResourceFinder.Controllers;
 using ResourceFinder.Handlers;
 using ResourceFinder.Tests.DataModels;
@@ -38,9 +39,8 @@ namespace ResourceFinder.Tests
             specialtyList.RemoveAll(x => x.GetType() == typeof(SpecialtyModelMock));
 
          var handler = new SpecialtyListHandler(a_specialtyFactory);
-         var controller = new SpecialtyController(handler);
 
-         var result = await controller.Get();
+         var result = this.JsonContent(await handler.Handle(new SpecialtyListRequest(), default));
          var response = this.GetObject<SpecialtyResponseDataModel>(result);
 
          Assert.NotNull(response);

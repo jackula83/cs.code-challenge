@@ -1,6 +1,6 @@
-﻿using ResourceEntities.Interfaces.Application;
-using ResourceEntities.Interfaces.Business;
-using ResourceEntities.Responses;
+﻿using ResourceApplicationEntities.Requests;
+using ResourceBusinessEntities.Interfaces.Features;
+using ResourceBusinessEntities.Interfaces.Models;
 using ResourceFinder.Controllers;
 using ResourceFinder.Handlers;
 using ResourceFinder.Tests.DataModels;
@@ -38,9 +38,8 @@ namespace ResourceFinder.Tests
             languageList.RemoveAll(x => x.GetType() == typeof(LanguageModelMock));
 
          var handler = new LanguageListHandler(a_languageFactory);
-         var controller = new LanguageController(handler);
 
-         var result = await controller.Get();
+         var result = this.JsonContent(await handler.Handle(new LanguageListRequest(), default));
          var response = this.GetObject<LanguageResponseDataModel>(result);
 
          Assert.NotNull(response);
