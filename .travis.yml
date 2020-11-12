@@ -27,10 +27,10 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: us-east-2
-  app: CarSalesAllocate
-  env: CarSales-env
+  app: GeekMotorsAllocate
+  env: GeekMotors-env
   bucket_name: elasticbeanstalk-us-east-2-149033151268
-  bucket_path: CarSalesAllocate
+  bucket_path: GeekMotorsAllocate
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
